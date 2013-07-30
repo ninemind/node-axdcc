@@ -1,11 +1,14 @@
-#Node.js XDCC library
+#Node.js advanced XDCC library
 requires Node.js IRC library. (`npm install irc`)
 
 IRC library for downloading files from XDCC bots.
 
 ##Usage
 
-    xdcc.request(client, args);
+    var axdcc = require('./lib/axdcc');
+    var request = new axdcc.Request(client, args);
+    request.emit("start");
+
 Requests an XDCC from `{client}` based on `{args}`
 
 `{client}` IRC client (from IRC library)
@@ -16,21 +19,19 @@ Requests an XDCC from `{client}` based on `{args}`
         "pack"      : < XDCC Pack ID >,
         "nick"      : < XDCC Bot Nick >,
         "path"      : < Path to download to >,
-        "notify"    : <*Channel/nick to notify about progress >,
-        "overwrite" : <*Boolean, overwrite instead of resume >
+        "resume"    : < Boolean, overwrite instead of resume >
     }
-``` {*}  indicates optional argument```
 
 ##Callbacks
 
-    client.on('xdcc-connect', pack);
+    request.on('connect', pack);
 Emitted when an XDCC transfer starts
 
 `{pack}`      is the XDCC pack information, see `Pack format` below
 
 -------
 
-    client.on('xdcc-data', pack, recieved);
+    request.on('progress', pack, recieved);
 Emitted when an XDCC transfer receives data
 
 `{pack}`      is the XDCC pack information, see `Pack format` below
@@ -39,14 +40,14 @@ Emitted when an XDCC transfer receives data
  
 -------
  
-    client.on('xdcc-complete', pack);
+    request.on('complete', pack);
 Emitted when an XDCC transfer is complete
 
 `{pack}`      is the XDCC pack information, see `Pack format` below
 
 -------
 
-    client.on('xdcc-error', pack, error);
+    request.on('dlerror', pack, error);
 Emitted when an XDCC transfer encounters an error
 
 `{pack}`      is the XDCC pack information, see `Pack format` below
@@ -54,17 +55,29 @@ Emitted when an XDCC transfer encounters an error
 `{error}`     is the error data
  
 ##Listeners
-    client.emit('xdcc-cancel', nick);
-When emitted, all XDCC transfers from `{nick}` are cancelled.
+
+    request.emit('start');
+When emitted, XDCC transfer starts.
+
+-------
+
+    request.emit('cancel');
+When emitted, all XDCC transfers are cancelled.
 
 `{nick}`      nick to cancel XDCC transfers from
 
+-------
+
+    request.emit('kill');
+When emitted, Request don't react on irc anymore.
+
 ##Pack format
     pack = {
+        "command"   : <DCC command of transfer(SEND/ACCEPT)>
         "filename"  : <Name of file being transferred>
-        "filesize"  : <Size of file being transferred>
-        "nick"      : <Nick of file sender>
         "ip"        : <IP of file sender>
         "port"      : <Port of file sender>
-        "notify"    : <Channel/nick to notify about progress>
+        "filesize"  : <Size of file being transferred>
+        "resumepos" : <Resume position of the file>
+        "location"  : <Path to download to>
     }

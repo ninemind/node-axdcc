@@ -1,19 +1,17 @@
 {
-  "name": "xdcc",
-  "description": "XDCC library for node",
-  "version": "0.1.0",
-  "contributors": [],
+  "name": "axdcc",
+  "description": "advanced XDCC library for node",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
-    "url": "http://github.com/indysama/node-xdcc"
+    "url": "http://github.com/DaVarga/node-xdcc"
   },
   "bugs": {
-    "mail": "indy@osakachan.net",
-    "url": "http://github.com/indysama/node-xdcc/issues"
+    "url": "http://github.com/DaVarga/node-xdcc/issues"
   },
-  "main": "lib/xdcc",
+  "main": "lib/axdcc",
   "engines": {
-    "node": ">=0.4.0"
+    "node": ">=0.10.13"
   },
   "_from": "xdcc",
   "dependencies": {
