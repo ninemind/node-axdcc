@@ -1,7 +1,7 @@
 {
   "name": "axdcc",
   "description": "advanced XDCC library for node",
-  "version": "0.2.17",
+  "version": "0.2.18",
   "repository": {
     "type": "git",
     "url": "http://github.com/DaVarga/node-xdcc"
@@ -12,9 +12,5 @@
   "main": "lib/axdcc",
   "engines": {
     "node": ">=0.10.13"
-  },
-  "_from": "xdcc",
-  "dependencies": {
-    "irc": "0.3.6"
   }
 }
