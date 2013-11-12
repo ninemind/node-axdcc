@@ -1,7 +1,9 @@
-#Node.js advanced XDCC library
-requires Node.js IRC library. (`npm install irc`)
+#Node.js advanced XDCC library.
+example requires Node.js IRC library. (`npm install irc`)
 
 IRC library for downloading files from XDCC bots.
+
+Works with Windows and Linux
 
 ##Usage
 
@@ -63,8 +65,6 @@ When emitted, XDCC transfer starts.
 
     request.emit('cancel');
 When emitted, all XDCC transfers are cancelled.
-
-`{nick}`      nick to cancel XDCC transfers from
 
 -------
 
