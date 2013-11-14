@@ -18,10 +18,11 @@ Requests an XDCC from `{client}` based on `{args}`
 `{args}` Information about the XDCC pack
     
     args = {
-        "pack"      : < XDCC Pack ID >,
-        "nick"      : < XDCC Bot Nick >,
-        "path"      : < Path to download to >,
-        "resume"    : < Boolean, overwrite instead of resume >
+        "pack"              : < XDCC Pack ID >,
+        "nick"              : < XDCC Bot Nick >,
+        "path"              : < Path to download to >,
+        "resume"            : < Boolean, overwrite instead of resume >,
+        "progressInterval"  : < Interval in seconds progress is updated >
     }
 
 ##Callbacks
