@@ -12,5 +12,8 @@
   "main": "lib/axdcc",
   "engines": {
     "node": ">=0.10.13"
-  }
+  },
+  "readmeFilename": "README.md",
+  "_id": "axdcc@0.2.22",
+  "_from": "axdcc@0.2.22"
 }
